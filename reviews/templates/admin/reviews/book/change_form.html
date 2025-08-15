@@ -1,0 +1,63 @@
+{% extends "admin/change_form.html" %}
+
+{% block content %}
+{{ block.super }}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Find the ISBN input field. Django admin adds 'id_' prefix.
+    const isbnInput = document.getElementById('id_isbn');
+    if (!isbnInput) return;
+
+    // Create the lookup button
+    const lookupButton = document.createElement('button');
+    lookupButton.type = 'button'; // Important: prevents form submission
+    lookupButton.innerText = 'Fetch Book Data from ISBN';
+    lookupButton.style.marginLeft = '10px';
+
+    // Add the button right after the ISBN input field's parent element
+    isbnInput.parentElement.parentElement.appendChild(lookupButton);
+
+    // Add event listener to the button
+    lookupButton.addEventListener('click', function() {
+        const isbn = isbnInput.value.trim();
+        if (!isbn) {
+            alert('Please enter an ISBN.');
+            return;
+        }
+
+        // Show a loading message
+        lookupButton.innerText = 'Fetching...';
+        lookupButton.disabled = true;
+
+        // Call our Django API endpoint
+        fetch(`/api/lookup-isbn/?isbn=${isbn}`)
+            .then(response => {
+                if (!response.ok) {
+                    // Handle errors like 404 Not Found
+                    return response.json().then(err => { throw new Error(err.error || 'Book not found') });
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Populate the form fields with the data we received
+                document.getElementById('id_title').value = data.title || '';
+                document.getElementById('id_author_name').value = data.author_name || '';
+                document.getElementById('id_publication_year').value = data.publication_year || '';
+                document.getElementById('id_publisher').value = data.publisher || '';
+                // author_institution is not available from Google Books API
+                alert('Book data has been populated!');
+            })
+            .catch(error => {
+                console.error('Error fetching book data:', error);
+                alert(`Error: ${error.message}`);
+            })
+            .finally(() => {
+                // Reset button state
+                lookupButton.innerText = 'Fetch Book Data from ISBN';
+                lookupButton.disabled = false;
+            });
+    });
+});
+</script>
+{% endblock %}
