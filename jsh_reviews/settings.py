@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -145,9 +146,28 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# jsh_reviews/settings.py (at the very bottom)
+
+# This setting tells Django at which URL static files are going to be served to the user.
+STATIC_URL = '/static/'
+
+# This is the absolute path to the directory where collectstatic will gather static files.
+# We are telling Django to create a folder named 'staticfiles' in your project's base directory.
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# This tells Django's collectstatic to use WhiteNoise's storage backend
+# which automatically compresses files and creates unique names for them.
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
