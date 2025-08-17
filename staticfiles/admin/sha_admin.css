@@ -1,0 +1,35 @@
+/* Custom SHA admin theme */
+:root {
+    --sha-green: #2e473b;
+    --sha-beige: #f5f1e6;
+}
+
+body.login, body {
+    background: var(--sha-beige) !important;
+}
+
+#header, .module caption, .breadcrumbs, .grp-module caption, .grp-breadcrumbs {
+    background: var(--sha-green) !important;
+    color: var(--sha-beige) !important;
+}
+
+#header a, .breadcrumbs a, .grp-breadcrumbs a {
+    color: var(--sha-beige) !important;
+}
+
+button, input[type="submit"], .button, .grp-button {
+    background: var(--sha-green) !important;
+    color: var(--sha-beige) !important;
+    border: none !important;
+}
+
+button:hover, input[type="submit"]:hover, .button:hover, .grp-button:hover {
+    background: #406a57 !important;
+}
+
+#content-main, .grp-content {
+    background: #fff !important;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 2rem;
+}

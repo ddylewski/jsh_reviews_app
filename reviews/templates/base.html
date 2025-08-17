@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSH Reviews</title>
+    <style>
+        body {
+            background: #f5f1e6;
+            color: #2e473b;
+            font-family: 'Georgia', 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+        }
+        .sha-hero {
+            background: #2e473b;
+            color: #f5f1e6;
+            padding: 3rem 1rem 2rem 1rem;
+            text-align: center;
+        }
+        .sha-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Georgia', serif;
+        }
+        .sha-lead {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+        .sha-btn {
+            background: #2e473b;
+            color: #f5f1e6;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 3px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .sha-btn:hover {
+            background: #406a57;
+        }
+        .sha-section {
+            max-width: 700px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            padding: 2rem;
+        }
+        .sha-section h2 {
+            color: #2e473b;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    {% block content %}{% endblock %}
+</body>
+</html>

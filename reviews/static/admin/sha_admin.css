@@ -1,0 +1,46 @@
+/* Custom SHA admin theme */
+:root {
+    --sha-green: #2e473b;
+    --sha-beige: #f5f1e6;
+}
+
+body.login, body {
+    background: var(--sha-beige) !important;
+}
+
+#header, .module caption, .breadcrumbs, .grp-module caption, .grp-breadcrumbs {
+    background: var(--sha-green) !important;
+    color: var(--sha-beige) !important;
+}
+
+#header a, .breadcrumbs a, .grp-breadcrumbs a {
+    color: var(--sha-beige) !important;
+}
+
+button, input[type="submit"], .button, .grp-button {
+    background: var(--sha-green) !important;
+    color: var(--sha-beige) !important;
+    border: none !important;
+}
+
+button:hover, input[type="submit"]:hover, .button:hover, .grp-button:hover {
+    background: #406a57 !important;
+}
+
+#content-main, .grp-content {
+    background: #fff !important;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 2rem;
+}
+
+/* Override Django admin blue accents with SHA green */
+a, .module h2, .module th, .grp-module h2, .grp-module th, .grp-changelist-results tbody tr.selected, .grp-changelist-results tbody tr.grp-row-selected, .grp-changelist-results tbody tr.grp-row-selected td, .grp-changelist-results tbody tr.selected td, .grp-changelist-results tbody tr.grp-row-selected th, .grp-changelist-results tbody tr.selected th, .grp-changelist-results tbody tr.grp-row-selected .grp-tools, .grp-changelist-results tbody tr.selected .grp-tools {
+    color: var(--sha-green) !important;
+}
+
+.button.default, input[type="submit"].default, .grp-button.grp-default {
+    background: var(--sha-green) !important;
+    color: var(--sha-beige) !important;
+    border: none !important;
+}

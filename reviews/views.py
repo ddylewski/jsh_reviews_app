@@ -1,3 +1,8 @@
+# User homepage view
+from django.shortcuts import render
+
+def home(request):
+	return render(request, 'home.html')
 
 # Add these imports at the top
 import requests
