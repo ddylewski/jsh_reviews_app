@@ -27,6 +27,6 @@ class Migration(migrations.Migration):
         ('reviews', '0002_populate_specialties'),
     ]
 
-    operations = [
+        operations = [
         migrations.RunPython(create_or_update_superuser),
     ]
