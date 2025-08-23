@@ -32,8 +32,8 @@ class ReviewAdmin(admin.ModelAdmin):
     list_filter = ('status', 'reviewer')
     search_fields = ('book__title', 'reviewer__last_name', 'reviewer__first_name')
     
-    # Use a more efficient widget for selecting related books and reviewers
-    raw_id_fields = ('book', 'reviewer')
+    # Use autocomplete fields so names are shown after selection
+    autocomplete_fields = ('book', 'reviewer')
     date_hierarchy = 'date_assigned'
 
 class SpecialtyAdmin(admin.ModelAdmin):
